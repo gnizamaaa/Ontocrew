@@ -1,0 +1,79 @@
+Pessoa
+
+Departamento
+	Arte
+		Atuação
+			Ator
+			Dublê
+			Figurante
+		Produção
+			Unit Production Manager
+			Property Master
+			Coordenador
+			Associados
+			Controlador
+			Contador
+			Assistente de contador
+			Transporte
+				Gerente
+				Coordenador
+				
+		Direção
+			Diretor
+			Assistente (costumam ter mais de um)
+			Direção de arte
+			
+		Maquiagem
+		Stylist (Costume Designer)
+		Hair stylist
+		
+		Roteirista
+		
+		
+	Som
+		Composição
+		Reprodução
+		Mixer
+		Operador
+		Supervisor
+		Editores
+		Assistentes
+		Orquestra
+	Câmera
+		Fotografia
+			Camera operator
+			Assistente
+			Fotógrafo
+		Direção
+		Iluminação
+			Tecnicos
+			Eletrico
+			Grip (key, boy, dolly, grips)
+			
+			
+	Pós produção	
+		Edição
+			Editor
+			Assistente
+			
+		VFX
+			Estudio
+			Supervisor
+			Editores
+			
+		
+Obras
+	Filmes
+		Relação de sequência
+	Curtas
+
+Reconhecimento (premiação)
+	Associação
+	Título (categoria)
+	Premio (instanciação da categoria)
+	Nomeação
+		Obra e pessoa
+	Vencedor
+		Obra e pessoa
+	
+

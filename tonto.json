@@ -1,0 +1,16 @@
+{
+  "projectName": "ontocrew",
+  "displayName": "ontocrew",
+  "version": "1.0.0",
+  "description": "",
+  "publisher": "",
+  "license": "Creative Commons 4.0",
+  "dependencies": {},
+  "outFolder": "out",
+  "authors": [
+    {
+      "name": "Rhuan Garcia",
+      "email": "rhuangt@gmail.com"
+    }
+  ]
+}
