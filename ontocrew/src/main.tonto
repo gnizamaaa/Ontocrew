@@ -1,7 +1,135 @@
 package main
 
-// 'kind' is a fundamental, rigid type.
-// 'HelloWorld' is a kind, representing a basic concept.
-kind HelloWorld {
-    message: string
+// --- Core Concepts ---
+
+mixin Candidato
+kind Pessoa specializes Candidato
+
+kind Obra specializes Candidato {
+   // A work has at least one department involved
+   [1] -- tem_departamento -- [1..*] Departamento
 }
+subkind Filme specializes Obra
+subkind Curta specializes Obra
+
+kind Departamento
+
+subkind Arte specializes Departamento
+subkind Som specializes Departamento
+subkind Camera specializes Departamento
+subkind PosProducao specializes Departamento
+subkind VFX specializes PosProducao
+
+
+// --- Role Hierarchy ---
+
+role ProfissionalDeCinema specializes Pessoa
+
+// --- Arte ---
+role ProfissionalArte specializes ProfissionalDeCinema {
+    // Professional works in specific Department
+    [1..*] -- trabalhaEm -- [1] Arte
+}
+
+// Arte -> Atuacao
+role ProfissionalAtuacao specializes ProfissionalArte
+role Ator specializes ProfissionalAtuacao
+role Duble specializes ProfissionalAtuacao
+role Figurante specializes ProfissionalAtuacao
+
+// Arte -> Producao
+role ProfissionalProducao specializes ProfissionalArte
+role Produtor specializes ProfissionalProducao
+role AssistenteProducao specializes ProfissionalProducao
+
+// Arte -> Direcao
+role ProfissionalDirecao specializes ProfissionalArte
+role Diretor specializes ProfissionalDirecao
+role AssistenteDirecao specializes ProfissionalDirecao
+role DiretorDeArte specializes ProfissionalDirecao
+
+// Arte -> Figurino
+role ProfissionalFigurino specializes ProfissionalArte
+role Maquiador specializes ProfissionalFigurino
+role CostumeDesigner specializes ProfissionalFigurino
+role HairStylist specializes ProfissionalFigurino
+
+// Arte -> Roteirista
+role Roteirista specializes ProfissionalArte
+
+// --- Som ---
+role ProfissionalSom specializes ProfissionalDeCinema {
+    [1..*] -- trabalhaEm -- [1] Som
+}
+role Compositor specializes ProfissionalSom
+role DiretorSom specializes ProfissionalSom // Quem é responsável pela direção geral do som, tem filme que não tem então vai ficar complexo - Acho que não vou usar
+role Mixer specializes ProfissionalSom  // Quem faz a mixagem de som - Acho que não vou usar 
+role SupervisorSom specializes ProfissionalSom // Quem supervisiona a parte de som, pode ser o mesmo que o diretor de som - Acho que não vou usar
+role EditorSom specializes ProfissionalSom // Quem edita especificamente o som - Acho que não vou usar
+role AssistenteSom specializes ProfissionalSom  // Auxiliares na parte de som - Acho que não vou usar
+role MusicoOrquestra specializes ProfissionalSom // Músicos que tocam na orquestra para a trilha sonora - Acho que não vou usar
+
+// --- Camera ---
+role ProfissionalCamera specializes ProfissionalDeCinema {
+    [1..*] -- trabalhaEm -- [1] Camera
+}
+
+// Camera -> Fotografia
+role CameraOperator specializes ProfissionalCamera
+role AssistenteCamera specializes ProfissionalCamera
+role Fotografo specializes ProfissionalCamera
+role DiretorFotografia specializes ProfissionalCamera
+
+// Camera -> Iluminacao
+role ProfissionalIluminacao specializes ProfissionalCamera
+role TecnicoIluminacao specializes ProfissionalIluminacao
+role Eletrico specializes ProfissionalIluminacao
+
+// Camera -> Iluminacao -> Grip
+role Grip specializes ProfissionalIluminacao
+role KeyGrip specializes Grip
+role BestBoy specializes Grip
+role DollyGrip specializes Grip
+role GripGeral specializes Grip
+
+// --- PosProducao ---
+role ProfissionalPosProducao specializes ProfissionalDeCinema {
+    [1..*] -- trabalhaEm -- [1] PosProducao
+}
+
+// PosProducao -> Edicao
+role Editor specializes ProfissionalPosProducao
+role AssistenteEditor specializes ProfissionalPosProducao
+
+// PosProducao -> VFX
+role ProfissionalVFX specializes ProfissionalPosProducao
+role SupervisorVFX specializes ProfissionalVFX
+role EditorVFX specializes ProfissionalVFX
+
+// 'Estudio' seems to be an organization, not deeply detailed yet
+kind EstudioVFX 
+
+// --- Premiacao ---
+
+kind Associacao
+
+kind Categoria{
+    [1] -- pertenceA -- [1] Associacao
+}
+
+kind InstanciaPremio{
+    [1] -- concedidaPor -- [1] Associacao
+}
+
+
+
+relator Nomeacao {
+    @mediation
+    [0..*] -- candidato -- [1] Candidato
+    @mediation
+    [0..*] -- categoria -- [1] Categoria
+    @mediation
+    [0..*] -- edicao -- [1] InstanciaPremio
+}
+
+phase Vitoria specializes Nomeacao
