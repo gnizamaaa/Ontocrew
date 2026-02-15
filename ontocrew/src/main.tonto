@@ -2,134 +2,726 @@ package main
 
 // --- Core Concepts ---
 
-mixin Candidato
-kind Pessoa specializes Candidato
+/**
+* Represents any entity that can be nominated for an award. This is a mixin because it can be applied to different kinds of entities (People, Works).
+*/
+mixin Candidato {
+    label {
+        @pt-br "Candidato"
+        @en "Candidate"
+    }
+    description {
+        @pt-br "Qualquer entidade que pode ser nomeada a um prêmio, podendo ser uma pessoa ou uma obra."
+        @en "Any entity that can be nominated for an award, which can be a person or a work."
+    }
+    nome: string
+    descricao: string  
+}
 
+/**
+* Represents a human being. It is a Kind because it supplies the principle of identity for its instances.
+*/
+kind Pessoa specializes Candidato {
+    label {
+        @pt-br "Pessoa"
+        @en "Person"
+    }
+    description {
+        @pt-br "Um ser humano individual."
+        @en "An individual human being."
+    }
+    data_nascimento: date
+    nacionalidade: string
+}
+
+/**
+* Represents an audiovisual work. It is a Kind because it supplies the principle of identity for the work.
+*/
 kind Obra specializes Candidato {
+    label {
+        @pt-br "Obra"
+        @en "Work"
+    }
+    description {
+        @pt-br "Uma produção audiovisual completa."
+        @en "A complete audiovisual production."
+    }
+    ano_lancamento: number
+    duracao_minutos: number
+    genero: string
+    orcamento: number
+    bilheteria: number
    // A work has at least one department involved
    [1] -- tem_departamento -- [1..*] Departamento
 }
-subkind Filme specializes Obra
-subkind Curta specializes Obra
 
-kind Departamento
+/**
+* Represents a feature-length film.
+*/
+subkind Filme specializes Obra {
+    label {
+        @pt-br "Filme"
+        @en "Movie"
+    }
+    description {
+        @pt-br "Um filme de longa-metragem."
+        @en "A feature-length film."
+    }
+}
 
-subkind Arte specializes Departamento
-subkind Som specializes Departamento
-subkind Camera specializes Departamento
-subkind PosProducao specializes Departamento
-subkind VFX specializes PosProducao
+/**
+* Represents a short film.
+*/
+subkind Curta specializes Obra {
+    label {
+        @pt-br "Curta-Metragem"
+        @en "Short Film"
+    }
+    description {
+        @pt-br "Um filme de curta duração."
+        @en "A short duration film."
+    }
+}
+
+/**
+* Represents a functional division within the production of a work.
+*/
+kind Departamento {
+    label {
+        @pt-br "Departamento"
+        @en "Department"
+    }
+    description {
+        @pt-br "Uma divisão funcional dentro da produção de uma obra."
+        @en "A functional division within the production of a work."
+    }
+    nome: string
+    descricao: string
+}
+
+/**
+* The Art department.
+*/
+subkind Arte specializes Departamento {
+    label {
+        @pt-br "Departamento de Arte"
+        @en "Art Department"
+    }
+}
+
+/**
+* The Sound department.
+*/
+subkind Som specializes Departamento {
+    label {
+        @pt-br "Departamento de Som"
+        @en "Sound Department"
+    }
+}
+
+/**
+* The Camera department.
+*/
+subkind Camera specializes Departamento {
+    label {
+        @pt-br "Departamento de Câmera"
+        @en "Camera Department"
+    }
+}
+
+/**
+* The Post-Production department.
+*/
+subkind PosProducao specializes Departamento {
+    label {
+        @pt-br "Departamento de Pós-Produção"
+        @en "Post-Production Department"
+    }
+}
+
+/**
+* The Visual Effects department.
+*/
+subkind VFX specializes PosProducao {
+    label {
+        @pt-br "Departamento de VFX"
+        @en "VFX Department"
+    }
+}
 
 
 // --- Role Hierarchy ---
 
-role ProfissionalDeCinema specializes Pessoa
+/**
+* Role played by a person who works in the film industry.
+*/
+role ProfissionalDeCinema specializes Pessoa {
+    label {
+        @pt-br "Profissional de Cinema"
+        @en "Film Professional"
+    }
+}
 
 // --- Arte ---
+
+/**
+* Role for professionals working in the Art Department.
+*/
 role ProfissionalArte specializes ProfissionalDeCinema {
+    label {
+        @pt-br "Profissional de Arte"
+        @en "Art Professional"
+    }
     // Professional works in specific Department
-    [1..*] -- trabalhaEm -- [1] Arte
+    [1..*] -- trabalhaEm -- [1..*] Arte
 }
 
 // Arte -> Atuacao
-role ProfissionalAtuacao specializes ProfissionalArte
-role Ator specializes ProfissionalAtuacao
-role Duble specializes ProfissionalAtuacao
-role Figurante specializes ProfissionalAtuacao
+/**
+* Professionals involved in acting.
+*/
+role ProfissionalAtuacao specializes ProfissionalArte {
+    label {
+        @pt-br "Profissional de Atuação"
+        @en "Acting Professional"
+    }
+}
+
+/**
+* An actor or actress who performs a role in a production.
+*/
+role Ator specializes ProfissionalAtuacao {
+    label {
+        @pt-br "Ator"
+        @en "Actor"
+    }
+}
+
+/**
+* A stunt performer who replaces an actor in dangerous scenes.
+*/
+role Duble specializes ProfissionalAtuacao {
+    label {
+        @pt-br "Dublê"
+        @en "Stunt Performer"
+    }
+}
+
+/**
+* An extra, a performer in a film who appears in a nonspeaking or nonsinging capacity.
+*/
+role Figurante specializes ProfissionalAtuacao {
+    label {
+        @pt-br "Figurante"
+        @en "Extra"
+    }
+}
 
 // Arte -> Producao
-role ProfissionalProducao specializes ProfissionalArte
-role Produtor specializes ProfissionalProducao
-role AssistenteProducao specializes ProfissionalProducao
+
+/**
+* Professionals involved in production management.
+*/
+role ProfissionalProducao specializes ProfissionalArte {
+    label {
+        @pt-br "Profissional de Produção"
+        @en "Production Professional"
+    }
+}
+
+/**
+* The producer who oversees the film production.
+*/
+role Produtor specializes ProfissionalProducao {
+    label {
+        @pt-br "Produtor"
+        @en "Producer"
+    }
+}
+
+/**
+* An assistant who supports the production team.
+*/
+role AssistenteProducao specializes ProfissionalProducao {
+    label {
+        @pt-br "Assistente de Produção"
+        @en "Production Assistant"
+    }
+}
 
 // Arte -> Direcao
-role ProfissionalDirecao specializes ProfissionalArte
-role Diretor specializes ProfissionalDirecao
-role AssistenteDirecao specializes ProfissionalDirecao
-role DiretorDeArte specializes ProfissionalDirecao
+
+/**
+* Professionals involved in directing the film.
+*/
+role ProfissionalDirecao specializes ProfissionalArte {
+    label {
+        @pt-br "Profissional de Direção"
+        @en "Direction Professional"
+    }
+}
+
+/**
+* The director of the film.
+*/
+role Diretor specializes ProfissionalDirecao {
+    label {
+        @pt-br "Diretor"
+        @en "Director"
+    }
+}
+
+/**
+* The assistant director.
+*/
+role AssistenteDirecao specializes ProfissionalDirecao {
+    label {
+        @pt-br "Assistente de Direção"
+        @en "Assistant Director"
+    }
+}
+
+/**
+* The art director responsible for the visual style.
+*/
+role DiretorDeArte specializes ProfissionalDirecao {
+    label {
+        @pt-br "Diretor de Arte"
+        @en "Art Director"
+    }
+}
 
 // Arte -> Figurino
-role ProfissionalFigurino specializes ProfissionalArte
-role Maquiador specializes ProfissionalFigurino
-role CostumeDesigner specializes ProfissionalFigurino
-role HairStylist specializes ProfissionalFigurino
+
+/**
+* Professionals involved in costume and makeup.
+*/
+role ProfissionalFigurino specializes ProfissionalArte {
+    label {
+        @pt-br "Profissional de Figurino"
+        @en "Costume Professional"
+    }
+}
+
+/**
+* The makeup artist.
+*/
+role Maquiador specializes ProfissionalFigurino {
+    label {
+        @pt-br "Maquiador"
+        @en "Makeup Artist"
+    }
+}
+
+/**
+* The costume designer.
+*/
+role CostumeDesigner specializes ProfissionalFigurino {
+    label {
+        @pt-br "Figurinista"
+        @en "Costume Designer"
+    }
+}
+
+/**
+* The hair stylist.
+*/
+role HairStylist specializes ProfissionalFigurino {
+    label {
+        @pt-br "Cabeleireiro"
+        @en "Hair Stylist"
+    }
+}
 
 // Arte -> Roteirista
-role Roteirista specializes ProfissionalArte
+
+/**
+* The screenwriter who writes the script.
+*/
+role Roteirista specializes ProfissionalArte {
+    label {
+        @pt-br "Roteirista"
+        @en "Screenwriter"
+    }
+}
 
 // --- Som ---
+
+/**
+* Professionals specialized in sound.
+*/
 role ProfissionalSom specializes ProfissionalDeCinema {
-    [1..*] -- trabalhaEm -- [1] Som
+    label {
+        @pt-br "Profissional de Som"
+        @en "Sound Professional"
+    }
+    [1..*] -- trabalhaEm -- [1..*] Som
 }
-role Compositor specializes ProfissionalSom
-role DiretorSom specializes ProfissionalSom // Quem é responsável pela direção geral do som, tem filme que não tem então vai ficar complexo - Acho que não vou usar
-role Mixer specializes ProfissionalSom  // Quem faz a mixagem de som - Acho que não vou usar 
-role SupervisorSom specializes ProfissionalSom // Quem supervisiona a parte de som, pode ser o mesmo que o diretor de som - Acho que não vou usar
-role EditorSom specializes ProfissionalSom // Quem edita especificamente o som - Acho que não vou usar
-role AssistenteSom specializes ProfissionalSom  // Auxiliares na parte de som - Acho que não vou usar
-role MusicoOrquestra specializes ProfissionalSom // Músicos que tocam na orquestra para a trilha sonora - Acho que não vou usar
+
+/**
+* The composer of the film score.
+*/
+role Compositor specializes ProfissionalSom {
+    label {
+        @pt-br "Compositor"
+        @en "Composer"
+    }
+}
+
+/**
+* The sound director.
+*/
+role DiretorSom specializes ProfissionalSom {
+    label {
+        @pt-br "Diretor de Som"
+        @en "Sound Director"
+    }
+}
+
+/**
+* The sound mixer.
+*/
+role Mixer specializes ProfissionalSom {
+    label {
+        @pt-br "Mixador de Som"
+        @en "Sound Mixer"
+    }
+}
+
+/**
+* The sound supervisor.
+*/
+role SupervisorSom specializes ProfissionalSom {
+    label {
+        @pt-br "Supervisor de Som"
+        @en "Sound Supervisor"
+    }
+}
+
+/**
+* The sound editor.
+*/
+role EditorSom specializes ProfissionalSom {
+    label {
+        @pt-br "Editor de Som"
+        @en "Sound Editor"
+    }
+}
+
+/**
+* The sound assistant.
+*/
+role AssistenteSom specializes ProfissionalSom {
+    label {
+        @pt-br "Assistente de Som"
+        @en "Sound Assistant"
+    }
+}
+
+/**
+* A musician playing in the orchestra for the soundtrack.
+*/
+role MusicoOrquestra specializes ProfissionalSom {
+    label {
+        @pt-br "Músico de Orquestra"
+        @en "Orchestra Musician"
+    }
+}
 
 // --- Camera ---
+
+/**
+* Professionals specialized in camera work.
+*/
 role ProfissionalCamera specializes ProfissionalDeCinema {
-    [1..*] -- trabalhaEm -- [1] Camera
+    label {
+        @pt-br "Profissional de Câmera"
+        @en "Camera Professional"
+    }
+    [1..*] -- trabalhaEm -- [1..*] Camera
 }
 
 // Camera -> Fotografia
-role CameraOperator specializes ProfissionalCamera
-role AssistenteCamera specializes ProfissionalCamera
-role Fotografo specializes ProfissionalCamera
-role DiretorFotografia specializes ProfissionalCamera
+
+/**
+* The camera operator who physically operates the camera.
+*/
+role CameraOperator specializes ProfissionalCamera {
+    label {
+        @pt-br "Operador de Câmera"
+        @en "Camera Operator"
+    }
+}
+
+/**
+* The camera assistant.
+*/
+role AssistenteCamera specializes ProfissionalCamera {
+    label {
+        @pt-br "Assistente de Câmera"
+        @en "Camera Assistant"
+    }
+}
+
+/**
+* The still photographer.
+*/
+role Fotografo specializes ProfissionalCamera {
+    label {
+        @pt-br "Fotógrafo"
+        @en "Still Photographer"
+    }
+}
+
+/**
+* The director of photography (cinematographer).
+*/
+role DiretorFotografia specializes ProfissionalCamera {
+    label {
+        @pt-br "Diretor de Fotografia"
+        @en "Director of Photography"
+    }
+}
 
 // Camera -> Iluminacao
-role ProfissionalIluminacao specializes ProfissionalCamera
-role TecnicoIluminacao specializes ProfissionalIluminacao
-role Eletrico specializes ProfissionalIluminacao
+
+/**
+* Professionals involved in lighting.
+*/
+role ProfissionalIluminacao specializes ProfissionalCamera {
+    label {
+        @pt-br "Profissional de Iluminação"
+        @en "Lighting Professional"
+    }
+}
+
+/**
+* A lighting technician.
+*/
+role TecnicoIluminacao specializes ProfissionalIluminacao {
+    label {
+        @pt-br "Técnico de Iluminação"
+        @en "Lighting Technician"
+    }
+}
+
+/**
+* An electrician working on set lighting.
+*/
+role Eletrico specializes ProfissionalIluminacao {
+    label {
+        @pt-br "Eletricista de Set"
+        @en "Set Electrician"
+    }
+}
 
 // Camera -> Iluminacao -> Grip
-role Grip specializes ProfissionalIluminacao
-role KeyGrip specializes Grip
-role BestBoy specializes Grip
-role DollyGrip specializes Grip
-role GripGeral specializes Grip
+
+/**
+* A lighting and rigging technician.
+*/
+role Grip specializes ProfissionalIluminacao {
+    label {
+        @pt-br "Maquinista"
+        @en "Grip"
+    }
+}
+
+/**
+* The head grip.
+*/
+role KeyGrip specializes Grip {
+    label {
+        @pt-br "Maquinista Chefe"
+        @en "Key Grip"
+    }
+}
+
+/**
+* The best boy grip (assistant to key grip).
+*/
+role BestBoy specializes Grip {
+    label {
+        @pt-br "Assistente de Chefe de Maquinária"
+        @en "Best Boy Grip"
+    }
+}
+
+/**
+* Grip specialized in operating camera dollies.
+*/
+role DollyGrip specializes Grip {
+    label {
+        @pt-br "Operador de Dolly"
+        @en "Dolly Grip"
+    }
+}
+
+/**
+* General grip crew.
+*/
+role GripGeral specializes Grip {
+    label {
+        @pt-br "Maquinista Geral"
+        @en "General Grip"
+    }
+}
 
 // --- PosProducao ---
+
+/**
+* Professionals involved in post-production.
+*/
 role ProfissionalPosProducao specializes ProfissionalDeCinema {
-    [1..*] -- trabalhaEm -- [1] PosProducao
+    label {
+        @pt-br "Profissional de Pós-Produção"
+        @en "Post-Production Professional"
+    }
+    [1..*] -- trabalhaEm -- [1..*] PosProducao
 }
 
 // PosProducao -> Edicao
-role Editor specializes ProfissionalPosProducao
-role AssistenteEditor specializes ProfissionalPosProducao
+
+/**
+* The film editor responsible for assembling the shots.
+*/
+role Editor specializes ProfissionalPosProducao {
+    label {
+        @pt-br "Editor"
+        @en "Editor"
+    }
+}
+
+/**
+* The assistant editor helping with organization and assembly.
+*/
+role AssistenteEditor specializes ProfissionalPosProducao {
+    label {
+        @pt-br "Assistente de Edição"
+        @en "Assistant Editor"
+    }
+}
 
 // PosProducao -> VFX
-role ProfissionalVFX specializes ProfissionalPosProducao
-role SupervisorVFX specializes ProfissionalVFX
-role EditorVFX specializes ProfissionalVFX
 
-// 'Estudio' seems to be an organization, not deeply detailed yet
-kind EstudioVFX 
+/**
+* Professionals specialized in visual effects.
+*/
+role ProfissionalVFX specializes ProfissionalPosProducao {
+    label {
+        @pt-br "Profissional de Efeitos Visuais"
+        @en "Visual Effects Professional"
+    }
+}
+
+/**
+* The supervisor overseeing VFX production.
+*/
+role SupervisorVFX specializes ProfissionalVFX {
+    label {
+        @pt-br "Supervisor de VFX"
+        @en "VFX Supervisor"
+    }
+}
+
+/**
+* The VFX artist/editor creating effects.
+*/
+role EditorVFX specializes ProfissionalVFX {
+    label {
+        @pt-br "Editor de VFX"
+        @en "VFX Editor"
+    }
+}
 
 // --- Premiacao ---
 
-kind Associacao
-
-kind Categoria{
-    [1] -- pertenceA -- [1] Associacao
+/**
+* An organization that grants awards to film professionals and works.
+*/
+kind Associacao {
+    label {
+        @pt-br "Associação"
+        @en "Association"
+    }
+    description {
+        @pt-br "Uma organização que concede prêmios a profissionais e obras de cinema."
+        @en "An organization that grants awards to film professionals and works."
+    }
+    nome: string
+    sigla: string
+    pais: string
 }
 
-kind InstanciaPremio{
-    [1] -- concedidaPor -- [1] Associacao
+/**
+* A category within an award system (e.g., Best Actor, Best Picture).
+*/
+kind Categoria {
+    label {
+        @pt-br "Categoria"
+        @en "Category"
+    }
+    description {
+        @pt-br "Uma categoria específica dentro de um sistema de premiação."
+        @en "A specific category within an award system."
+    }
+    nome: string
+    descricao: string
+    [1..*] -- pertenceA -- [1] Associacao
 }
 
+/**
+* A specific edition of an award ceremony (e.g., Oscars 2026).
+*/
+kind EdicaoPremio {
+    label {
+        @pt-br "Edição do Prêmio"
+        @en "Award Edition"
+    }
+    description {
+        @pt-br "Uma edição específica de uma cerimônia de premiação."
+        @en "A specific edition of an award ceremony."
+    }
+    ano: number
+    data_realizacao: date
+    local: string
+    [1..*] -- concedidaPor -- [1] Associacao
+} // Significando a edição de um prêmio específico, como "Oscar 2026"
 
-
+/**
+* Represents the nomination of a candidate for a specific category in an award edition.
+* It is a Relator because it connects the Candidate, the Category, and the Edition.
+*/
 relator Nomeacao {
+    label {
+        @pt-br "Nomeação"
+        @en "Nomination"
+    }
+    description {
+        @pt-br "A indicação de um candidato a uma categoria específica em uma edição de prêmio."
+        @en "The nomination of a candidate for a specific category in an award edition."
+    }
+    data_anuncio: date
     @mediation
-    [0..*] -- candidato -- [1] Candidato
+    [1] -- candidato -- [1] Candidato
     @mediation
-    [0..*] -- categoria -- [1] Categoria
+    [1] -- categoria -- [1] Categoria
     @mediation
-    [0..*] -- edicao -- [1] InstanciaPremio
+    [1] -- edicao -- [1] EdicaoPremio
 }
 
-phase Vitoria specializes Nomeacao
+/**
+* Represents a nomination that resulted in a win.
+* It is a Phase of Nomination, implying that a Nomination can transition into a Victory state.
+*/
+phase Vitoria specializes Nomeacao {
+    label {
+        @pt-br "Vitória"
+        @en "Victory"
+    }
+    description {
+        @pt-br "Uma nomeação que resultou em vitória."
+        @en "A nomination that resulted in a win."
+    }
+    discurso: string
+}

@@ -1,0 +1,205 @@
+{
+  "pessoas": [
+    { "id": "p_fernanda_montenegro", "type": "Pessoa", "nome": "Fernanda Montenegro", "data_nascimento": "1929-10-16", "nacionalidade": "Brasileira", "descricao": "Atriz consagrada" },
+    { "id": "p_walter_salles", "type": "Pessoa", "nome": "Walter Salles", "data_nascimento": "1956-04-12", "nacionalidade": "Brasileira", "descricao": "Cineasta" },
+    { "id": "p_vinicius_de_oliveira", "type": "Pessoa", "nome": "Vinícius de Oliveira", "data_nascimento": "1985-07-18", "nacionalidade": "Brasileira", "descricao": "Ator" },
+    { "id": "p_fernando_meirelles", "type": "Pessoa", "nome": "Fernando Meirelles", "data_nascimento": "1955-11-09", "nacionalidade": "Brasileira", "descricao": "Cineasta" },
+    { "id": "p_katia_lund", "type": "Pessoa", "nome": "Kátia Lund", "data_nascimento": "1966-03-13", "nacionalidade": "Brasileira", "descricao": "Diretora" },
+    { "id": "p_alexandre_rodrigues", "type": "Pessoa", "nome": "Alexandre Rodrigues", "data_nascimento": "1983-05-21", "nacionalidade": "Brasileira", "descricao": "Ator" },
+    { "id": "p_leandro_firmino", "type": "Pessoa", "nome": "Leandro Firmino", "data_nascimento": "1978-06-23", "nacionalidade": "Brasileira", "descricao": "Ator" },
+    { "id": "p_alice_braga", "type": "Pessoa", "nome": "Alice Braga", "data_nascimento": "1983-04-15", "nacionalidade": "Brasileira", "descricao": "Atriz" },
+    { "id": "p_cesar_charlone", "type": "Pessoa", "nome": "César Charlone", "data_nascimento": "1950-02-20", "nacionalidade": "Uruguaia", "descricao": "Diretor de Fotografia" },
+    { "id": "p_jose_padilha", "type": "Pessoa", "nome": "José Padilha", "data_nascimento": "1967-08-01", "nacionalidade": "Brasileira", "descricao": "Cineasta" },
+    { "id": "p_wagner_moura", "type": "Pessoa", "nome": "Wagner Moura", "data_nascimento": "1976-06-27", "nacionalidade": "Brasileira", "descricao": "Ator e Diretor" },
+    { "id": "p_andre_ramiro", "type": "Pessoa", "nome": "André Ramiro", "data_nascimento": "1981-01-20", "nacionalidade": "Brasileira", "descricao": "Ator" },
+    { "id": "p_caio_junqueira", "type": "Pessoa", "nome": "Caio Junqueira", "data_nascimento": "1976-11-15", "nacionalidade": "Brasileira", "descricao": "Ator" },
+    { "id": "p_lula_carvalho", "type": "Pessoa", "nome": "Lula Carvalho", "data_nascimento": "1977-01-01", "nacionalidade": "Brasileira", "descricao": "Diretor de Fotografia" },
+    { "id": "p_guel_arraes", "type": "Pessoa", "nome": "Guel Arraes", "data_nascimento": "1953-12-12", "nacionalidade": "Brasileira", "descricao": "Cineasta" },
+    { "id": "p_selton_mello", "type": "Pessoa", "nome": "Selton Mello", "data_nascimento": "1972-12-30", "nacionalidade": "Brasileira", "descricao": "Ator e Diretor" },
+    { "id": "p_matheus_nachtergaele", "type": "Pessoa", "nome": "Matheus Nachtergaele", "data_nascimento": "1969-01-03", "nacionalidade": "Brasileira", "descricao": "Ator" },
+    { "id": "p_virginia_cavendish", "type": "Pessoa", "nome": "Virgínia Cavendish", "data_nascimento": "1970-11-25", "nacionalidade": "Brasileira", "descricao": "Atriz" },
+    { "id": "p_kleber_mendonca", "type": "Pessoa", "nome": "Kleber Mendonça Filho", "data_nascimento": "1968-11-03", "nacionalidade": "Brasileira", "descricao": "Cineasta" },
+    { "id": "p_juliano_dornelles", "type": "Pessoa", "nome": "Juliano Dornelles", "data_nascimento": "1980-01-01", "nacionalidade": "Brasileira", "descricao": "Cineasta" },
+    { "id": "p_sonia_braga", "type": "Pessoa", "nome": "Sonia Braga", "data_nascimento": "1950-06-08", "nacionalidade": "Brasileira", "descricao": "Atriz" },
+    { "id": "p_udo_kier", "type": "Pessoa", "nome": "Udo Kier", "data_nascimento": "1944-10-14", "nacionalidade": "Alemã", "descricao": "Ator" },
+    { "id": "p_silvero_pereira", "type": "Pessoa", "nome": "Silvero Pereira", "data_nascimento": "1982-06-20", "nacionalidade": "Brasileira", "descricao": "Ator" },
+
+    { "id": "p_christopher_nolan", "type": "Pessoa", "nome": "Christopher Nolan", "data_nascimento": "1970-07-30", "nacionalidade": "Britânica", "descricao": "Cineasta conhecido por narrativas complexas" },
+    { "id": "p_hans_zimmer", "type": "Pessoa", "nome": "Hans Zimmer", "data_nascimento": "1957-09-12", "nacionalidade": "Alemã", "descricao": "Compositor de trilhas sonoras icônicas" },
+    { "id": "p_leonardo_dicaprio", "type": "Pessoa", "nome": "Leonardo DiCaprio", "data_nascimento": "1974-11-11", "nacionalidade": "Norte-americana", "descricao": "Ator" },
+    { "id": "p_christian_bale", "type": "Pessoa", "nome": "Christian Bale", "data_nascimento": "1974-01-30", "nacionalidade": "Britânica", "descricao": "Ator" },
+    { "id": "p_cillian_murphy", "type": "Pessoa", "nome": "Cillian Murphy", "data_nascimento": "1976-05-25", "nacionalidade": "Irlandesa", "descricao": "Ator" }
+  ],
+  "filmes": [
+    {
+      "id": "f_central_brasil",
+      "type": "Filme",
+      "nome": "Central do Brasil",
+      "ano_lancamento": 1998,
+      "genero": "Drama",
+      "orcamento": 2900000,
+      "bilheteria": 22000000,
+      "departamentos": [
+        { "id": "dep_arte_central", "tipo": "Arte" },
+        { "id": "dep_direcao_central", "tipo": "Direcao" },
+        { "id": "dep_camera_central", "tipo": "Camera" }
+      ]
+    },
+    {
+      "id": "f_cidade_deus",
+      "type": "Filme",
+      "nome": "Cidade de Deus",
+      "ano_lancamento": 2002,
+      "genero": "Crime/Drama",
+      "orcamento": 3300000,
+      "bilheteria": 30600000,
+      "departamentos": [
+        { "id": "dep_arte_cdd", "tipo": "Arte" },
+        { "id": "dep_direcao_cdd", "tipo": "Direcao" },
+        { "id": "dep_camera_cdd", "tipo": "Camera" },
+        { "id": "dep_pos_cdd", "tipo": "PosProducao" }
+      ]
+    },
+    {
+      "id": "f_tropa_elite",
+      "type": "Filme",
+      "nome": "Tropa de Elite",
+      "ano_lancamento": 2007,
+      "genero": "Ação/Crime",
+      "orcamento": 4000000,
+      "bilheteria": 14700000,
+      "departamentos": [
+        { "id": "dep_arte_tropa", "tipo": "Arte" },
+        { "id": "dep_direcao_tropa", "tipo": "Direcao" },
+        { "id": "dep_camera_tropa", "tipo": "Camera" },
+        { "id": "dep_som_tropa", "tipo": "Som" }
+      ]
+    },
+    {
+      "id": "f_auto_compadecida",
+      "type": "Filme",
+      "nome": "O Auto da Compadecida",
+      "ano_lancamento": 2000,
+      "genero": "Comédia",
+      "orcamento": 4500000,
+      "bilheteria": 11500000,
+      "departamentos": [
+        { "id": "dep_arte_auto", "tipo": "Arte" },
+        { "id": "dep_direcao_auto", "tipo": "Direcao" }
+      ]
+    },
+    {
+      "id": "f_bacurau",
+      "type": "Filme",
+      "nome": "Bacurau",
+      "ano_lancamento": 2019,
+      "genero": "Thriller/Drama",
+      "orcamento": 7700000,
+      "bilheteria": 2600000,
+      "departamentos": [
+        { "id": "dep_arte_bacurau", "tipo": "Arte" },
+        { "id": "dep_direcao_bacurau", "tipo": "Direcao" },
+        { "id": "dep_camera_bacurau", "tipo": "Camera" }
+      ]
+    },
+    {
+      "id": "f_inception",
+      "type": "Filme",
+      "nome": "A Origem (Inception)",
+      "ano_lancamento": 2010,
+      "genero": "Ficção Científica",
+      "orcamento": 160000000,
+      "bilheteria": 836800000,
+      "departamentos": [
+        { "id": "dep_arte_inception", "tipo": "Arte" },
+        { "id": "dep_direcao_inception", "tipo": "Direcao" },
+        { "id": "dep_som_inception", "tipo": "Som" }
+      ]
+    },
+    {
+      "id": "f_the_dark_knight",
+      "type": "Filme",
+      "nome": "Batman: O Cavaleiro das Trevas",
+      "ano_lancamento": 2008,
+      "genero": "Ação/Drama",
+      "orcamento": 185000000,
+      "bilheteria": 1006000000,
+      "departamentos": [
+        { "id": "dep_arte_tdk", "tipo": "Arte" },
+        { "id": "dep_direcao_tdk", "tipo": "Direcao" },
+        { "id": "dep_som_tdk", "tipo": "Som" }
+      ]
+    }
+  ],
+  "cargos": [
+    { "pessoa": "p_walter_salles", "departamento": "dep_direcao_central", "role": "Diretor" },
+    { "pessoa": "p_fernanda_montenegro", "departamento": "dep_arte_central", "role": "Ator" },
+    { "pessoa": "p_vinicius_de_oliveira", "departamento": "dep_arte_central", "role": "Ator" },
+    
+    { "pessoa": "p_fernando_meirelles", "departamento": "dep_direcao_cdd", "role": "Diretor" },
+    { "pessoa": "p_katia_lund", "departamento": "dep_direcao_cdd", "role": "Diretor" },
+    { "pessoa": "p_cesar_charlone", "departamento": "dep_camera_cdd", "role": "DiretorFotografia" },
+    { "pessoa": "p_alexandre_rodrigues", "departamento": "dep_arte_cdd", "role": "Ator" },
+    { "pessoa": "p_leandro_firmino", "departamento": "dep_arte_cdd", "role": "Ator" },
+    { "pessoa": "p_alice_braga", "departamento": "dep_arte_cdd", "role": "Ator" },
+
+    { "pessoa": "p_jose_padilha", "departamento": "dep_direcao_tropa", "role": "Diretor" },
+    { "pessoa": "p_wagner_moura", "departamento": "dep_arte_tropa", "role": "Ator" },
+    { "pessoa": "p_andre_ramiro", "departamento": "dep_arte_tropa", "role": "Ator" },
+    { "pessoa": "p_caio_junqueira", "departamento": "dep_arte_tropa", "role": "Ator" },
+    { "pessoa": "p_lula_carvalho", "departamento": "dep_camera_tropa", "role": "DiretorFotografia" },
+    
+    { "pessoa": "p_guel_arraes", "departamento": "dep_direcao_auto", "role": "Diretor" },
+    { "pessoa": "p_selton_mello", "departamento": "dep_arte_auto", "role": "Ator" },
+    { "pessoa": "p_matheus_nachtergaele", "departamento": "dep_arte_auto", "role": "Ator" },
+    { "pessoa": "p_virginia_cavendish", "departamento": "dep_arte_auto", "role": "Ator" },
+    { "pessoa": "p_fernanda_montenegro", "departamento": "dep_arte_auto", "role": "Ator" },
+
+    { "pessoa": "p_kleber_mendonca", "departamento": "dep_direcao_bacurau", "role": "Diretor" },
+    { "pessoa": "p_juliano_dornelles", "departamento": "dep_direcao_bacurau", "role": "Diretor" },
+    { "pessoa": "p_sonia_braga", "departamento": "dep_arte_bacurau", "role": "Ator" },
+    { "pessoa": "p_udo_kier", "departamento": "dep_arte_bacurau", "role": "Ator" },
+    { "pessoa": "p_silvero_pereira", "departamento": "dep_arte_bacurau", "role": "Ator" },
+
+    { "pessoa": "p_christopher_nolan", "departamento": "dep_direcao_inception", "role": "Diretor" },
+    { "pessoa": "p_christopher_nolan", "departamento": "dep_arte_inception", "role": "Roteirista" },
+    { "pessoa": "p_christopher_nolan", "departamento": "dep_arte_inception", "role": "Produtor" },
+    { "pessoa": "p_hans_zimmer", "departamento": "dep_som_inception", "role": "Compositor" },
+    { "pessoa": "p_leonardo_dicaprio", "departamento": "dep_arte_inception", "role": "Ator" },
+    { "pessoa": "p_cillian_murphy", "departamento": "dep_arte_inception", "role": "Ator" },
+
+    { "pessoa": "p_christopher_nolan", "departamento": "dep_direcao_tdk", "role": "Diretor" },
+    { "pessoa": "p_hans_zimmer", "departamento": "dep_som_tdk", "role": "Compositor" },
+    { "pessoa": "p_christian_bale", "departamento": "dep_arte_tdk", "role": "Ator" },
+    { "pessoa": "p_cillian_murphy", "departamento": "dep_arte_tdk", "role": "Ator" }
+  ],
+  "associacoes": [
+    { "id": "a_oscar", "type": "Associacao", "nome": "Academy of Motion Picture Arts and Sciences", "sigla": "AMPAS", "pais": "EUA" },
+    { "id": "a_berlinale", "type": "Associacao", "nome": "Berlin International Film Festival", "sigla": "Berlinale", "pais": "Alemanha" },
+    { "id": "a_cannes", "type": "Associacao", "nome": "Festival de Cannes", "sigla": "Cannes", "pais": "França" },
+    { "id": "a_grande_premio", "type": "Associacao", "nome": "Grande Prêmio do Cinema Brasileiro", "sigla": "GPCB", "pais": "Brasil" }
+  ],
+  "categorias": [
+    { "id": "c_melhor_atriz", "type": "Categoria", "nome": "Melhor Atriz", "descricao": "Premia a melhor performance feminina em papel principal.", "pertenceA": "a_oscar" },
+    { "id": "c_melhor_filme_estrangeiro", "type": "Categoria", "nome": "Melhor Filme Estrangeiro", "descricao": "Premia o melhor filme de língua não inglesa.", "pertenceA": "a_oscar" },
+    { "id": "c_urso_ouro", "type": "Categoria", "nome": "Urso de Ouro", "descricao": "Melhor filme do festival.", "pertenceA": "a_berlinale" },
+    { "id": "c_premio_juri", "type": "Categoria", "nome": "Prêmio do Júri", "descricao": "Premiação especial do júri.", "pertenceA": "a_cannes" }
+  ],
+  "edicoes": [
+    { "id": "e_oscar_1999", "type": "EdicaoPremio", "ano": 1999, "data_realizacao": "1999-03-21", "local": "Los Angeles", "concedidaPor": "a_oscar" },
+    { "id": "e_berlinale_1998", "type": "EdicaoPremio", "ano": 1998, "data_realizacao": "1998-02-11", "local": "Berlim", "concedidaPor": "a_berlinale" },
+    { "id": "e_cannes_2019", "type": "EdicaoPremio", "ano": 2019, "data_realizacao": "2019-05-14", "local": "Cannes", "concedidaPor": "a_cannes" },
+    { "id": "e_oscar_2004", "type": "EdicaoPremio", "ano": 2004, "data_realizacao": "2004-02-29", "local": "Los Angeles", "concedidaPor": "a_oscar" },
+    { "id": "e_oscar_2009", "type": "EdicaoPremio", "ano": 2009, "data_realizacao": "2009-02-22", "local": "Los Angeles", "concedidaPor": "a_oscar" },
+    { "id": "e_oscar_2011", "type": "EdicaoPremio", "ano": 2011, "data_realizacao": "2011-02-27", "local": "Los Angeles", "concedidaPor": "a_oscar" }
+  ],
+  "nomeacoes": [
+    { "id": "n1", "type": "Nomeacao", "data_anuncio": "1999-02-09", "candidato": "p_fernanda_montenegro", "categoria": "c_melhor_atriz", "edicao": "e_oscar_1999" },
+    { "id": "n2", "type": "Nomeacao", "data_anuncio": "1999-02-09", "candidato": "f_central_brasil", "categoria": "c_melhor_filme_estrangeiro", "edicao": "e_oscar_1999" },
+    { "id": "n3", "type": "Nomeacao", "data_anuncio": "2004-01-27", "candidato": "f_cidade_deus", "categoria": "c_melhor_filme_estrangeiro", "edicao": "e_oscar_2004" }
+  ],
+  "vitorias": [
+    { "id": "v1", "type": "Vitoria", "candidato": "f_central_brasil", "categoria": "c_urso_ouro", "edicao": "e_berlinale_1998", "discurso": "Obrigado Berlim, viva o cinema brasileiro!", "data_anuncio": "1998-02-22" },
+    { "id": "v2", "type": "Vitoria", "candidato": "f_bacurau", "categoria": "c_premio_juri", "edicao": "e_cannes_2019", "discurso": "A cultura é nossa maior arma.", "data_anuncio": "2019-05-25" }
+  ]
+}

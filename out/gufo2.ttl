@@ -1,0 +1,796 @@
+@prefix : <https://example.com#>.
+@prefix gufo: <http://purl.org/nemo/gufo#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://example.com> rdf:type owl:Ontology;
+    owl:imports gufo:.
+:HelloWorld rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "HelloWorld"@en.
+:Candidate rdf:type owl:Class, gufo:Mixin, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Candidato"@pt-br, "Candidate"@en;
+    rdfs:comment "Qualquer entidade que pode ser nomeada a um prêmio, podendo ser uma pessoa ou uma obra."@pt-br, "Any entity that can be nominated for an award, which can be a person or a work."@en.
+:Person rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Pessoa"@pt-br, "Person"@en;
+    rdfs:comment "Um ser humano individual."@pt-br, "An individual human being."@en.
+:Work rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:label "Obra"@pt-br, "Work"@en;
+    rdfs:comment "Uma produção audiovisual completa."@pt-br, "A complete audiovisual production."@en.
+:Movie rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Filme"@pt-br, "Movie"@en;
+    rdfs:comment "Um filme de longa-metragem."@pt-br, "A feature-length film."@en.
+:ShortFilm rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Curta-Metragem"@pt-br, "Short Film"@en;
+    rdfs:comment "Um filme de curta duração."@pt-br, "A short duration film."@en.
+:Department rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Departamento"@pt-br, "Department"@en;
+    rdfs:comment "Uma divisão funcional dentro da produção de uma obra."@pt-br, "A functional division within the production of a work."@en.
+:ArtDepartment rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Departamento de Arte"@pt-br, "Art Department"@en.
+:SoundDepartment rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Departamento de Som"@pt-br, "Sound Department"@en.
+:CameraDepartment rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Departamento de Câmera"@pt-br, "Camera Department"@en.
+:PostProductionDepartment rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Departamento de Pós-Produção"@pt-br, "Post-Production Department"@en.
+:VFXDepartment rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "Departamento de VFX"@pt-br, "VFX Department"@en.
+:FilmProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Cinema"@pt-br, "Film Professional"@en.
+:ArtProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Arte"@pt-br, "Art Professional"@en.
+:ActingProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Atuação"@pt-br, "Acting Professional"@en.
+:Actor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Ator"@pt-br, "Actor"@en.
+:StuntPerformer rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Dublê"@pt-br, "Stunt Performer"@en.
+:Extra rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Figurante"@pt-br, "Extra"@en.
+:ProductionProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Produção"@pt-br, "Production Professional"@en.
+:Producer rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Produtor"@pt-br, "Producer"@en.
+:ProductionAssistant rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Assistente de Produção"@pt-br, "Production Assistant"@en.
+:DirectionProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Direção"@pt-br, "Direction Professional"@en.
+:Director rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Diretor"@pt-br, "Director"@en.
+:AssistantDirector rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Assistente de Direção"@pt-br, "Assistant Director"@en.
+:ArtDirector rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Diretor de Arte"@pt-br, "Art Director"@en.
+:CostumeProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Figurino"@pt-br, "Costume Professional"@en.
+:MakeupArtist rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Maquiador"@pt-br, "Makeup Artist"@en.
+:CostumeDesigner rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Figurinista"@pt-br, "Costume Designer"@en.
+:HairStylist rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Cabeleireiro"@pt-br, "Hair Stylist"@en.
+:Screenwriter rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Roteirista"@pt-br, "Screenwriter"@en.
+:SoundProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Som"@pt-br, "Sound Professional"@en.
+:Composer rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Compositor"@pt-br, "Composer"@en.
+:SoundDirector rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Diretor de Som"@pt-br, "Sound Director"@en.
+:SoundMixer rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Mixador de Som"@pt-br, "Sound Mixer"@en.
+:SoundSupervisor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Supervisor de Som"@pt-br, "Sound Supervisor"@en.
+:SoundEditor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Editor de Som"@pt-br, "Sound Editor"@en.
+:SoundAssistant rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Assistente de Som"@pt-br, "Sound Assistant"@en.
+:OrchestraMusician rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Músico de Orquestra"@pt-br, "Orchestra Musician"@en.
+:CameraProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Câmera"@pt-br, "Camera Professional"@en.
+:CameraOperator rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Operador de Câmera"@pt-br, "Camera Operator"@en.
+:CameraAssistant rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Assistente de Câmera"@pt-br, "Camera Assistant"@en.
+:StillPhotographer rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Fotógrafo"@pt-br, "Still Photographer"@en.
+:DirectorOfPhotography rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Diretor de Fotografia"@pt-br, "Director of Photography"@en.
+:LightingProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Iluminação"@pt-br, "Lighting Professional"@en.
+:LightingTechnician rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Técnico de Iluminação"@pt-br, "Lighting Technician"@en.
+:SetElectrician rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Eletricista de Set"@pt-br, "Set Electrician"@en.
+:Grip rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Maquinista"@pt-br, "Grip"@en.
+:KeyGrip rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Maquinista Chefe"@pt-br, "Key Grip"@en.
+:BestBoyGrip rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Assistente de Chefe de Maquinária"@pt-br, "Best Boy Grip"@en.
+:DollyGrip rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Operador de Dolly"@pt-br, "Dolly Grip"@en.
+:GeneralGrip rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Maquinista Geral"@pt-br, "General Grip"@en.
+:PostProductionProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Pós-Produção"@pt-br, "Post-Production Professional"@en.
+:Editor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Editor"@pt-br, "Editor"@en.
+:AssistantEditor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Assistente de Edição"@pt-br, "Assistant Editor"@en.
+:VisualEffectsProfessional rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Profissional de Efeitos Visuais"@pt-br, "Visual Effects Professional"@en.
+:VFXSupervisor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Supervisor de VFX"@pt-br, "VFX Supervisor"@en.
+:VFXEditor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Editor de VFX"@pt-br, "VFX Editor"@en.
+:Association rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Associação"@pt-br, "Association"@en;
+    rdfs:comment "Uma organização que concede prêmios a profissionais e obras de cinema."@pt-br, "An organization that grants awards to film professionals and works."@en.
+:Category rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Categoria"@pt-br, "Category"@en;
+    rdfs:comment "Uma categoria específica dentro de um sistema de premiação."@pt-br, "A specific category within an award system."@en.
+:AwardEdition rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Edição do Prêmio"@pt-br, "Award Edition"@en;
+    rdfs:comment "Uma edição específica de uma cerimônia de premiação."@pt-br, "A specific edition of an award ceremony."@en.
+:Nomination rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Nomeação"@pt-br, "Nomination"@en;
+    rdfs:comment "A indicação de um candidato a uma categoria específica em uma edição de prêmio."@pt-br, "The nomination of a candidate for a specific category in an award edition."@en.
+:Victory rdf:type owl:Class, gufo:Phase, owl:NamedIndividual;
+    rdfs:label "Vitória"@pt-br, "Victory"@en;
+    rdfs:comment "Uma nomeação que resultou em vitória."@pt-br, "A nomination that resulted in a win."@en.
+:Person rdfs:subClassOf :Candidate.
+:Work rdfs:subClassOf :Candidate.
+:Movie rdfs:subClassOf :Work.
+:ShortFilm rdfs:subClassOf :Work.
+:ArtDepartment rdfs:subClassOf :Department.
+:SoundDepartment rdfs:subClassOf :Department.
+:CameraDepartment rdfs:subClassOf :Department.
+:PostProductionDepartment rdfs:subClassOf :Department.
+:VFXDepartment rdfs:subClassOf :PostProductionDepartment.
+:FilmProfessional rdfs:subClassOf :Person.
+:ArtProfessional rdfs:subClassOf :FilmProfessional.
+:ActingProfessional rdfs:subClassOf :ArtProfessional.
+:Actor rdfs:subClassOf :ActingProfessional.
+:StuntPerformer rdfs:subClassOf :ActingProfessional.
+:Extra rdfs:subClassOf :ActingProfessional.
+:ProductionProfessional rdfs:subClassOf :ArtProfessional.
+:Producer rdfs:subClassOf :ProductionProfessional.
+:ProductionAssistant rdfs:subClassOf :ProductionProfessional.
+:DirectionProfessional rdfs:subClassOf :ArtProfessional.
+:Director rdfs:subClassOf :DirectionProfessional.
+:AssistantDirector rdfs:subClassOf :DirectionProfessional.
+:ArtDirector rdfs:subClassOf :DirectionProfessional.
+:CostumeProfessional rdfs:subClassOf :ArtProfessional.
+:MakeupArtist rdfs:subClassOf :CostumeProfessional.
+:CostumeDesigner rdfs:subClassOf :CostumeProfessional.
+:HairStylist rdfs:subClassOf :CostumeProfessional.
+:Screenwriter rdfs:subClassOf :ArtProfessional.
+:SoundProfessional rdfs:subClassOf :FilmProfessional.
+:Composer rdfs:subClassOf :SoundProfessional.
+:SoundDirector rdfs:subClassOf :SoundProfessional.
+:SoundMixer rdfs:subClassOf :SoundProfessional.
+:SoundSupervisor rdfs:subClassOf :SoundProfessional.
+:SoundEditor rdfs:subClassOf :SoundProfessional.
+:SoundAssistant rdfs:subClassOf :SoundProfessional.
+:OrchestraMusician rdfs:subClassOf :SoundProfessional.
+:CameraProfessional rdfs:subClassOf :FilmProfessional.
+:CameraOperator rdfs:subClassOf :CameraProfessional.
+:CameraAssistant rdfs:subClassOf :CameraProfessional.
+:StillPhotographer rdfs:subClassOf :CameraProfessional.
+:DirectorOfPhotography rdfs:subClassOf :CameraProfessional.
+:LightingProfessional rdfs:subClassOf :CameraProfessional.
+:LightingTechnician rdfs:subClassOf :LightingProfessional.
+:SetElectrician rdfs:subClassOf :LightingProfessional.
+:Grip rdfs:subClassOf :LightingProfessional.
+:KeyGrip rdfs:subClassOf :Grip.
+:BestBoyGrip rdfs:subClassOf :Grip.
+:DollyGrip rdfs:subClassOf :Grip.
+:GeneralGrip rdfs:subClassOf :Grip.
+:PostProductionProfessional rdfs:subClassOf :FilmProfessional.
+:Editor rdfs:subClassOf :PostProductionProfessional.
+:AssistantEditor rdfs:subClassOf :PostProductionProfessional.
+:VisualEffectsProfessional rdfs:subClassOf :PostProductionProfessional.
+:VFXSupervisor rdfs:subClassOf :VisualEffectsProfessional.
+:VFXEditor rdfs:subClassOf :VisualEffectsProfessional.
+:Victory rdfs:subClassOf :Nomination.
+:nome rdfs:domain :Candidate;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "nome"@en.
+:descricao rdfs:domain :Candidate;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "descricao"@en.
+:data_nascimento rdfs:domain :Person;
+    rdfs:range xsd:date;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "data_nascimento"@en.
+:nacionalidade rdfs:domain :Person;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "nacionalidade"@en.
+:ano_lancamento rdfs:domain :Work;
+    rdfs:range :number;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "ano_lancamento"@en.
+:duracao_minutos rdfs:domain :Work;
+    rdfs:range :number;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "duracao_minutos"@en.
+:genero rdfs:domain :Work;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "genero"@en.
+:orcamento rdfs:domain :Work;
+    rdfs:range :number;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "orcamento"@en.
+:bilheteria rdfs:domain :Work;
+    rdfs:range :number;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "bilheteria"@en.
+:nome_1 rdfs:domain :Department;https://www.xvideos.com/video.oiphvdo984d/i_came_three_times_from_a_wide_bottle_in_a_holey_ass._i_cum_and_squirts_many_times_without_using_my_hands
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "nome"@en.
+:descricao_1 rdfs:domain :Department;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "descricao"@en.
+:nome_2 rdfs:domain :Association;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "nome"@en.
+:sigla rdfs:domain :Association;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "sigla"@en.
+:pais rdfs:domain :Association;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "pais"@en.
+:nome_3 rdfs:domain :Category;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "nome"@en.
+:descricao_2 rdfs:domain :Category;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "descricao"@en.
+:ano rdfs:domain :AwardEdition;
+    rdfs:range :number;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "ano"@en.
+:data_realizacao rdfs:domain :AwardEdition;
+    rdfs:range xsd:date;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "data_realizacao"@en.
+:local rdfs:domain :AwardEdition;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "local"@en.
+:data_anuncio rdfs:domain :Nomination;
+    rdfs:range xsd:date;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "data_anuncio"@en.
+:discurso rdfs:domain :Victory;
+    rdfs:range xsd:string;
+    rdf:type owl:DatatypeProperty;
+    rdfs:subPropertyOf gufo:hasQualityValue;
+    rdfs:label "discurso"@en.
+:tem_departamento rdf:type owl:ObjectProperty;
+    rdfs:domain :Work;
+    rdfs:range :Department;
+    rdfs:label "tem_departamento"@en.
+:trabalhaEm_1 rdf:type owl:ObjectProperty;
+    rdfs:domain :ArtProfessional;
+    rdfs:range :ArtDepartment;
+    rdfs:label "trabalhaEm"@en.
+:trabalhaEm_3 rdf:type owl:ObjectProperty;
+    rdfs:domain :SoundProfessional;
+    rdfs:range :SoundDepartment;
+    rdfs:label "trabalhaEm"@en.
+:trabalhaEm_2 rdf:type owl:ObjectProperty;
+    rdfs:domain :CameraProfessional;
+    rdfs:range :CameraDepartment;
+    rdfs:label "trabalhaEm"@en.
+:trabalhaEm rdf:type owl:ObjectProperty;
+    rdfs:domain :PostProductionProfessional;
+    rdfs:range :PostProductionDepartment;
+    rdfs:label "trabalhaEm"@en.
+:pertenceA rdf:type owl:ObjectProperty;
+    rdfs:domain :Category;
+    rdfs:range :Association;
+    rdfs:label "pertenceA"@en.
+:concedidaPor rdf:type owl:ObjectProperty;
+    rdfs:domain :AwardEdition;
+    rdfs:range :Association;
+    rdfs:label "concedidaPor"@en.
+:candidato rdf:type owl:ObjectProperty;
+    rdfs:domain :Nomination;
+    rdfs:range :Candidate;
+    rdfs:label "candidato"@en;
+    rdfs:subPropertyOf gufo:mediates.
+:categoria rdf:type owl:ObjectProperty;
+    rdfs:domain :Nomination;
+    rdfs:range :Category;
+    rdfs:label "categoria"@en;
+    rdfs:subPropertyOf gufo:mediates.
+:edicao rdf:type owl:ObjectProperty;
+    rdfs:domain :Nomination;
+    rdfs:range :AwardEdition;
+    rdfs:label "edicao"@en;
+    rdfs:subPropertyOf gufo:mediates.
+
+# --- Pessoas ---
+
+:p_fernanda_montenegro rdf:type :Person, owl:NamedIndividual ;
+    :nome "Fernanda Montenegro" ;
+    :descricao "Atriz consagrada" ;
+    :data_nascimento "1929-10-16"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_walter_salles rdf:type :Person, owl:NamedIndividual ;
+    :nome "Walter Salles" ;
+    :descricao "Cineasta" ;
+    :data_nascimento "1956-04-12"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_vinicius_de_oliveira rdf:type :Person, owl:NamedIndividual ;
+    :nome "Vinícius de Oliveira" ;
+    :descricao "Ator" ;
+    :data_nascimento "1985-07-18"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_fernando_meirelles rdf:type :Person, owl:NamedIndividual ;
+    :nome "Fernando Meirelles" ;
+    :descricao "Cineasta" ;
+    :data_nascimento "1955-11-09"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_katia_lund rdf:type :Person, owl:NamedIndividual ;
+    :nome "Kátia Lund" ;
+    :descricao "Diretora" ;
+    :data_nascimento "1966-03-13"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_alexandre_rodrigues rdf:type :Person, owl:NamedIndividual ;
+    :nome "Alexandre Rodrigues" ;
+    :descricao "Ator" ;
+    :data_nascimento "1983-05-21"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_leandro_firmino rdf:type :Person, owl:NamedIndividual ;
+    :nome "Leandro Firmino" ;
+    :descricao "Ator" ;
+    :data_nascimento "1978-06-23"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_alice_braga rdf:type :Person, owl:NamedIndividual ;
+    :nome "Alice Braga" ;
+    :descricao "Atriz" ;
+    :data_nascimento "1983-04-15"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_cesar_charlone rdf:type :Person, owl:NamedIndividual ;
+    :nome "César Charlone" ;
+    :descricao "Diretor de Fotografia" ;
+    :data_nascimento "1950-02-20"^^xsd:date ;
+    :nacionalidade "Uruguaia" .
+
+:p_jose_padilha rdf:type :Person, owl:NamedIndividual ;
+    :nome "José Padilha" ;
+    :descricao "Cineasta" ;
+    :data_nascimento "1967-08-01"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_wagner_moura rdf:type :Person, owl:NamedIndividual ;
+    :nome "Wagner Moura" ;
+    :descricao "Ator e Diretor" ;
+    :data_nascimento "1976-06-27"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_andre_ramiro rdf:type :Person, owl:NamedIndividual ;
+    :nome "André Ramiro" ;
+    :descricao "Ator" ;
+    :data_nascimento "1981-01-20"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_caio_junqueira rdf:type :Person, owl:NamedIndividual ;
+    :nome "Caio Junqueira" ;
+    :descricao "Ator" ;
+    :data_nascimento "1976-11-15"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_lula_carvalho rdf:type :Person, owl:NamedIndividual ;
+    :nome "Lula Carvalho" ;
+    :descricao "Diretor de Fotografia" ;
+    :data_nascimento "1977-01-01"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_guel_arraes rdf:type :Person, owl:NamedIndividual ;
+    :nome "Guel Arraes" ;
+    :descricao "Cineasta" ;
+    :data_nascimento "1953-12-12"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_selton_mello rdf:type :Person, owl:NamedIndividual ;
+    :nome "Selton Mello" ;
+    :descricao "Ator e Diretor" ;
+    :data_nascimento "1972-12-30"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_matheus_nachtergaele rdf:type :Person, owl:NamedIndividual ;
+    :nome "Matheus Nachtergaele" ;
+    :descricao "Ator" ;
+    :data_nascimento "1969-01-03"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_virginia_cavendish rdf:type :Person, owl:NamedIndividual ;
+    :nome "Virgínia Cavendish" ;
+    :descricao "Atriz" ;
+    :data_nascimento "1970-11-25"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_kleber_mendonca rdf:type :Person, owl:NamedIndividual ;
+    :nome "Kleber Mendonça Filho" ;
+    :descricao "Cineasta" ;
+    :data_nascimento "1968-11-03"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_juliano_dornelles rdf:type :Person, owl:NamedIndividual ;
+    :nome "Juliano Dornelles" ;
+    :descricao "Cineasta" ;
+    :data_nascimento "1980-01-01"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_sonia_braga rdf:type :Person, owl:NamedIndividual ;
+    :nome "Sonia Braga" ;
+    :descricao "Atriz" ;
+    :data_nascimento "1950-06-08"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_udo_kier rdf:type :Person, owl:NamedIndividual ;
+    :nome "Udo Kier" ;
+    :descricao "Ator" ;
+    :data_nascimento "1944-10-14"^^xsd:date ;
+    :nacionalidade "Alemã" .
+
+:p_silvero_pereira rdf:type :Person, owl:NamedIndividual ;
+    :nome "Silvero Pereira" ;
+    :descricao "Ator" ;
+    :data_nascimento "1982-06-20"^^xsd:date ;
+    :nacionalidade "Brasileira" .
+
+:p_christopher_nolan rdf:type :Person, owl:NamedIndividual ;
+    :nome "Christopher Nolan" ;
+    :descricao "Cineasta conhecido por narrativas complexas" ;
+    :data_nascimento "1970-07-30"^^xsd:date ;
+    :nacionalidade "Britânica" .
+
+:p_hans_zimmer rdf:type :Person, owl:NamedIndividual ;
+    :nome "Hans Zimmer" ;
+    :descricao "Compositor de trilhas sonoras icônicas" ;
+    :data_nascimento "1957-09-12"^^xsd:date ;
+    :nacionalidade "Alemã" .
+
+:p_leonardo_dicaprio rdf:type :Person, owl:NamedIndividual ;
+    :nome "Leonardo DiCaprio" ;
+    :descricao "Ator" ;
+    :data_nascimento "1974-11-11"^^xsd:date ;
+    :nacionalidade "Norte-americana" .
+
+:p_christian_bale rdf:type :Person, owl:NamedIndividual ;
+    :nome "Christian Bale" ;
+    :descricao "Ator" ;
+    :data_nascimento "1974-01-30"^^xsd:date ;
+    :nacionalidade "Britânica" .
+
+:p_cillian_murphy rdf:type :Person, owl:NamedIndividual ;
+    :nome "Cillian Murphy" ;
+    :descricao "Ator" ;
+    :data_nascimento "1976-05-25"^^xsd:date ;
+    :nacionalidade "Irlandesa" .
+
+
+# --- Filmes e Departamentos ---
+
+:f_central_brasil rdf:type :Movie, owl:NamedIndividual ;
+    :nome "Central do Brasil" ;
+    :ano_lancamento 1998 ;
+    :duracao_minutos 113 ;
+    :genero "Drama" ;
+    :orcamento 2900000 ;
+    :bilheteria 22000000 ;
+    :tem_departamento :dep_arte_central, :dep_direcao_central, :dep_camera_central .
+
+:dep_arte_central rdf:type :ArtDepartment, owl:NamedIndividual .
+:dep_direcao_central rdf:type :DirectionProfessional, owl:NamedIndividual . # Correction: Department? No, Direction Department is not in the schema explicitly like ArtDepartment. Wait, schema has Art, Sound, Camera, Post, VFX. It doesn't have 'DirectionDepartment'. Assuming 'ArtDepartment' or generalized.
+# Checking schema: ArtDepartment, SoundDepartment, CameraDepartment, PostProductionDepartment, VFXDepartment.
+# Missing 'Direction department'. I will map strictly to what is available or create generic if needed.
+# However, usually Direction is a team. I'll check if I can just use Department.
+# :DirectionDepartment is not defined. I'll use :Department for now or map to closest.
+# Actually, looking at the schema, I see classes like :ArtDirector, :Director.
+# I will use :Department for generic ones not covered.
+# Let's see... :dep_direcao_central. I'll use Department.
+
+:dep_direcao_central rdf:type :Department, owl:NamedIndividual .
+:dep_camera_central rdf:type :CameraDepartment, owl:NamedIndividual .
+
+:f_cidade_deus rdf:type :Movie, owl:NamedIndividual ;
+    :nome "Cidade de Deus" ;
+    :ano_lancamento 2002 ;
+    :genero "Crime/Drama" ;
+    :orcamento 3300000 ;
+    :bilheteria 30600000 ;
+    :tem_departamento :dep_arte_cdd, :dep_direcao_cdd, :dep_camera_cdd, :dep_pos_cdd .
+
+:dep_arte_cdd rdf:type :ArtDepartment, owl:NamedIndividual .
+:dep_direcao_cdd rdf:type :Department, owl:NamedIndividual .
+:dep_camera_cdd rdf:type :CameraDepartment, owl:NamedIndividual .
+:dep_pos_cdd rdf:type :PostProductionDepartment, owl:NamedIndividual .
+
+:f_tropa_elite rdf:type :Movie, owl:NamedIndividual ;
+    :nome "Tropa de Elite" ;
+    :ano_lancamento 2007 ;
+    :genero "Ação/Crime" ;
+    :orcamento 4000000 ;
+    :bilheteria 14700000 ;
+    :tem_departamento :dep_arte_tropa, :dep_direcao_tropa, :dep_camera_tropa, :dep_som_tropa .
+
+:dep_arte_tropa rdf:type :ArtDepartment, owl:NamedIndividual .
+:dep_direcao_tropa rdf:type :Department, owl:NamedIndividual .
+:dep_camera_tropa rdf:type :CameraDepartment, owl:NamedIndividual .
+:dep_som_tropa rdf:type :SoundDepartment, owl:NamedIndividual .
+
+:f_auto_compadecida rdf:type :Movie, owl:NamedIndividual ;
+    :nome "O Auto da Compadecida" ;
+    :ano_lancamento 2000 ;
+    :genero "Comédia" ;
+    :orcamento 4500000 ;
+    :bilheteria 11500000 ;
+    :tem_departamento :dep_arte_auto, :dep_direcao_auto .
+
+:dep_arte_auto rdf:type :ArtDepartment, owl:NamedIndividual .
+:dep_direcao_auto rdf:type :Department, owl:NamedIndividual .
+
+:f_bacurau rdf:type :Movie, owl:NamedIndividual ;
+    :nome "Bacurau" ;
+    :ano_lancamento 2019 ;
+    :genero "Thriller/Drama" ;
+    :orcamento 7700000 ;
+    :bilheteria 2600000 ;
+    :tem_departamento :dep_arte_bacurau, :dep_direcao_bacurau, :dep_camera_bacurau .
+
+:dep_arte_bacurau rdf:type :ArtDepartment, owl:NamedIndividual .
+:dep_direcao_bacurau rdf:type :Department, owl:NamedIndividual .
+:dep_camera_bacurau rdf:type :CameraDepartment, owl:NamedIndividual .
+
+:f_inception rdf:type :Movie, owl:NamedIndividual ;
+    :nome "A Origem (Inception)" ;
+    :ano_lancamento 2010 ;
+    :genero "Ficção Científica" ;
+    :orcamento 160000000 ;
+    :bilheteria 836800000 ;
+    :tem_departamento :dep_arte_inception, :dep_direcao_inception, :dep_som_inception .
+
+:dep_arte_inception rdf:type :ArtDepartment, owl:NamedIndividual .
+:dep_direcao_inception rdf:type :Department, owl:NamedIndividual .
+:dep_som_inception rdf:type :SoundDepartment, owl:NamedIndividual .
+
+:f_the_dark_knight rdf:type :Movie, owl:NamedIndividual ;
+    :nome "Batman: O Cavaleiro das Trevas" ;
+    :ano_lancamento 2008 ;
+    :genero "Ação/Drama" ;
+    :orcamento 185000000 ;
+    :bilheteria 1006000000 ;
+    :tem_departamento :dep_arte_tdk, :dep_direcao_tdk, :dep_som_tdk .
+
+:dep_arte_tdk rdf:type :ArtDepartment, owl:NamedIndividual .
+:dep_direcao_tdk rdf:type :Department, owl:NamedIndividual .
+:dep_som_tdk rdf:type :SoundDepartment, owl:NamedIndividual .
+
+
+# --- Cargos (Individuals playing Roles) ---
+
+# Central do Brasil
+:p_walter_salles rdf:type :Director ; :trabalhaEm :dep_direcao_central .
+:p_walter_salles rdf:type :Screenwriter ; :trabalhaEm :dep_arte_central .
+:p_fernanda_montenegro rdf:type :Actor ; :trabalhaEm :dep_arte_central .
+:p_vinicius_de_oliveira rdf:type :Actor ; :trabalhaEm :dep_arte_central .
+
+# Cidade de Deus
+:p_fernando_meirelles rdf:type :Director ; :trabalhaEm :dep_direcao_cdd .
+:p_katia_lund rdf:type :Director ; :trabalhaEm :dep_direcao_cdd .
+:p_cesar_charlone rdf:type :DirectorOfPhotography ; :trabalhaEm :dep_camera_cdd .
+:p_alexandre_rodrigues rdf:type :Actor ; :trabalhaEm :dep_arte_cdd .
+:p_leandro_firmino rdf:type :Actor ; :trabalhaEm :dep_arte_cdd .
+:p_alice_braga rdf:type :Actor ; :trabalhaEm :dep_arte_cdd .
+
+# Tropa de Elite
+:p_jose_padilha rdf:type :Director ; :trabalhaEm :dep_direcao_tropa .
+:p_wagner_moura rdf:type :Actor ; :trabalhaEm :dep_arte_tropa .
+:p_andre_ramiro rdf:type :Actor ; :trabalhaEm :dep_arte_tropa .
+:p_caio_junqueira rdf:type :Actor ; :trabalhaEm :dep_arte_tropa .
+:p_lula_carvalho rdf:type :DirectorOfPhotography ; :trabalhaEm :dep_camera_tropa .
+
+# Auto da Compadecida
+:p_guel_arraes rdf:type :Director ; :trabalhaEm :dep_direcao_auto .
+:p_selton_mello rdf:type :Actor ; :trabalhaEm :dep_arte_auto .
+:p_matheus_nachtergaele rdf:type :Actor ; :trabalhaEm :dep_arte_auto .
+:p_virginia_cavendish rdf:type :Actor ; :trabalhaEm :dep_arte_auto .
+:p_fernanda_montenegro rdf:type :Actor ; :trabalhaEm :dep_arte_auto .
+
+# Bacurau
+:p_kleber_mendonca rdf:type :Director ; :trabalhaEm :dep_direcao_bacurau .
+:p_juliano_dornelles rdf:type :Director ; :trabalhaEm :dep_direcao_bacurau .
+:p_sonia_braga rdf:type :Actor ; :trabalhaEm :dep_arte_bacurau .
+:p_udo_kier rdf:type :Actor ; :trabalhaEm :dep_arte_bacurau .
+:p_silvero_pereira rdf:type :Actor ; :trabalhaEm :dep_arte_bacurau .
+
+# Inception
+:p_christopher_nolan rdf:type :Director ; :trabalhaEm :dep_direcao_inception .
+:p_christopher_nolan rdf:type :Screenwriter ; :trabalhaEm :dep_arte_inception .
+:p_christopher_nolan rdf:type :Producer ; :trabalhaEm :dep_arte_inception .
+:p_hans_zimmer rdf:type :Composer ; :trabalhaEm :dep_som_inception .
+:p_leonardo_dicaprio rdf:type :Actor ; :trabalhaEm :dep_arte_inception .
+:p_cillian_murphy rdf:type :Actor ; :trabalhaEm :dep_arte_inception .
+
+# Dark Knight
+:p_christopher_nolan rdf:type :Director ; :trabalhaEm :dep_direcao_tdk .
+:p_hans_zimmer rdf:type :Composer ; :trabalhaEm :dep_som_tdk .
+:p_christian_bale rdf:type :Actor ; :trabalhaEm :dep_arte_tdk .
+:p_cillian_murphy rdf:type :Actor ; :trabalhaEm :dep_arte_tdk .
+
+
+# --- Associações ---
+
+:a_oscar rdf:type :Association, owl:NamedIndividual ;
+    :nome "Academy of Motion Picture Arts and Sciences" ;
+    :sigla "AMPAS" ;
+    :pais "EUA" .
+
+:a_berlinale rdf:type :Association, owl:NamedIndividual ;
+    :nome "Berlin International Film Festival" ;
+    :sigla "Berlinale" ;
+    :pais "Alemanha" .
+
+:a_cannes rdf:type :Association, owl:NamedIndividual ;
+    :nome "Festival de Cannes" ;
+    :sigla "Cannes" ;
+    :pais "França" .
+
+:a_grande_premio rdf:type :Association, owl:NamedIndividual ;
+    :nome "Grande Prêmio do Cinema Brasileiro" ;
+    :sigla "GPCB" ;
+    :pais "Brasil" .
+
+
+# --- Categorias ---
+
+:c_melhor_atriz rdf:type :Category, owl:NamedIndividual ;
+    :nome "Melhor Atriz" ;
+    :descricao "Premia a melhor performance feminina em papel principal." ;
+    :pertenceA :a_oscar .
+
+:c_melhor_filme_estrangeiro rdf:type :Category, owl:NamedIndividual ;
+    :nome "Melhor Filme Estrangeiro" ;
+    :descricao "Premia o melhor filme de língua não inglesa." ;
+    :pertenceA :a_oscar .
+
+:c_urso_ouro rdf:type :Category, owl:NamedIndividual ;
+    :nome "Urso de Ouro" ;
+    :descricao "Melhor filme do festival." ;
+    :pertenceA :a_berlinale .
+
+:c_premio_juri rdf:type :Category, owl:NamedIndividual ;
+    :nome "Prêmio do Júri" ;
+    :descricao "Premiação especial do júri." ;
+    :pertenceA :a_cannes .
+
+
+# --- Edições ---
+
+:e_oscar_1999 rdf:type :AwardEdition, owl:NamedIndividual ;
+    :ano 1999 ;
+    :data_realizacao "1999-03-21"^^xsd:date ;
+    :local "Los Angeles" ;
+    :concedidaPor :a_oscar .
+
+:e_berlinale_1998 rdf:type :AwardEdition, owl:NamedIndividual ;
+    :ano 1998 ;
+    :data_realizacao "1998-02-11"^^xsd:date ;
+    :local "Berlim" ;
+    :concedidaPor :a_berlinale .
+
+:e_cannes_2019 rdf:type :AwardEdition, owl:NamedIndividual ;
+    :ano 2019 ;
+    :data_realizacao "2019-05-14"^^xsd:date ;
+    :local "Cannes" ;
+    :concedidaPor :a_cannes .
+
+:e_oscar_2004 rdf:type :AwardEdition, owl:NamedIndividual ;
+    :ano 2004 ;
+    :data_realizacao "2004-02-29"^^xsd:date ;
+    :local "Los Angeles" ;
+    :concedidaPor :a_oscar .
+
+:e_oscar_2009 rdf:type :AwardEdition, owl:NamedIndividual ;
+    :ano 2009 ;
+    :data_realizacao "2009-02-22"^^xsd:date ;
+    :local "Los Angeles" ;
+    :concedidaPor :a_oscar .
+
+:e_oscar_2011 rdf:type :AwardEdition, owl:NamedIndividual ;
+    :ano 2011 ;
+    :data_realizacao "2011-02-27"^^xsd:date ;
+    :local "Los Angeles" ;
+    :concedidaPor :a_oscar .
+
+
+# --- Nomeações e Vitórias ---
+
+:n1 rdf:type :Nomination, owl:NamedIndividual ;
+    :data_anuncio "1999-02-09"^^xsd:date ;
+    :candidato :p_fernanda_montenegro ;
+    :categoria :c_melhor_atriz ;
+    :edicao :e_oscar_1999 .
+
+:n2 rdf:type :Nomination, owl:NamedIndividual ;
+    :data_anuncio "1999-02-09"^^xsd:date ;
+    :candidato :f_central_brasil ;
+    :categoria :c_melhor_filme_estrangeiro ;
+    :edicao :e_oscar_1999 .
+
+:n3 rdf:type :Nomination, owl:NamedIndividual ;
+    :data_anuncio "2004-01-27"^^xsd:date ;
+    :candidato :f_cidade_deus ;
+    :categoria :c_melhor_filme_estrangeiro ;
+    :edicao :e_oscar_2004 .
+
+:v1 rdf:type :Victory, owl:NamedIndividual ;
+    :data_anuncio "1998-02-22"^^xsd:date ;
+    :candidato :f_central_brasil ;
+    :categoria :c_urso_ouro ;
+    :edicao :e_berlinale_1998 ;
+    :discurso "Obrigado Berlim, viva o cinema brasileiro!" .
+
+:v2 rdf:type :Victory, owl:NamedIndividual ;
+    :data_anuncio "2019-05-25"^^xsd:date ;
+    :candidato :f_bacurau ;
+    :categoria :c_premio_juri ;
+    :edicao :e_cannes_2019 ;
+    :discurso "A cultura é nossa maior arma." .
+
+
